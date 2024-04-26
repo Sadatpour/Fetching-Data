@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسک دوره جاوااسکریپت</title>
+    <link rel="stylesheet" href="./styles/index.css" />
+  </head>
+
+  <body class="">
+    <h1>لیست تراکنش ها</h1>
+    <div class="transactions">
+      <button class="data-btn">بارگذاری تراکنش ها</button>
+      <input
+        class="search-input hidden"
+        type="text"
+        value=""
+        placeholder=" جستجو بر اساس شماره پیگیری"
+      />
+      <div class="dropdown hidden">
+        <select class="dropdown-content">
+          <option href="#">مرتب سازی بر اساس قیمت</option>
+          <option href="#" value="asc">مبلغ - نزولی</option>
+          <option href="#" value="desc">مبلغ - صعودی</option>
+        </select>
+      </div>
+    </div>
+    <div class="transaction-list">
+      <table class="table">
+        <thead class="table-header hidden">
+          <tr>
+            <th>ردیف</th>
+            <th>نوع تراکنش</th>
+            <th>مبلغ</th>
+            <th>شماره پیگیری</th>
+            <th>تاریخ تراکنش</th>
+          </tr>
+        </thead>
+        <tbody class="table-body"></tbody>
+      </table>
+    </div>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
