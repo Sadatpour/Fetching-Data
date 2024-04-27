@@ -29,7 +29,7 @@ function searchInData(e) {
       return res.json();
     })
     .then((data) => {
-     createHtml(data);
+      createHtml(data);
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
@@ -105,3 +105,10 @@ function createHtml(data) {
 
   tableBody.innerHTML = transaction;
 }
+
+/*  #####     #####  -------------------------------------------- */
+/*  ## ##     ## ##              *    *  By: Moji                 */
+/*  ##  ##   ##  ##  #######  ###### ##  S.Mojtaba Sadatpour      */
+/*  ##   ## ##   ##  ##   ##    ##   ##  sadatpour.web@gmail.com  */
+/*  ##    ###    ##  ##   ##    ##   ##  Git:Sadatpour            */
+/*  ##    ###    ##  #######  ####   ##  ------------------------ */
