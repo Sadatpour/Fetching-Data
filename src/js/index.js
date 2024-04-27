@@ -15,29 +15,11 @@ function getData() {
       return res.json();
     })
     .then((data) => {
-      let transaction = "";
-      tableHeader.classList.remove("hidden");
-      getDataBtn.classList.add("hidden");
-      searchInput.classList.remove("hidden");
-      dropdown.classList.remove("hidden");
-      data.forEach((item) => {
-        const date = new Date(item.date);
-        const transactionDate = date.toLocaleDateString("Fa-Ir");
-        transaction += `
-          <tr>
-            <td>${item.id}</td>
-            <td>${item.type}</td>
-            <td>${item.price}</td>
-            <td>${item.refId}</td>
-            <td>${transactionDate}</td>
-          </tr>
-       `;
-      });
-
-      tableBody.innerHTML = transaction;
-      console.log(data);
+      createHtml(data);
     })
-    .catch();
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
 }
 function searchInData(e) {
   const query = e.target.value;
@@ -47,27 +29,7 @@ function searchInData(e) {
       return res.json();
     })
     .then((data) => {
-      console.log(data);
-      let transaction = "";
-      tableHeader.classList.remove("hidden");
-      getDataBtn.classList.add("hidden");
-      searchInput.classList.remove("hidden");
-      dropdown.classList.remove("hidden");
-      data.forEach((item) => {
-        const date = new Date(item.date);
-        const transactionDate = date.toLocaleDateString("Fa-Ir");
-        transaction += `
-          <tr>
-            <td>${item.id}</td>
-            <td>${item.type}</td>
-            <td>${item.price}</td>
-            <td>${item.refId}</td>
-            <td>${transactionDate}</td>
-          </tr>
-       `;
-      });
-
-      tableBody.innerHTML = transaction;
+     createHtml(data);
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
@@ -82,26 +44,7 @@ function sortData() {
         return res.json();
       })
       .then((data) => {
-        let transaction = "";
-        tableHeader.classList.remove("hidden");
-        getDataBtn.classList.add("hidden");
-        searchInput.classList.remove("hidden");
-        dropdown.classList.remove("hidden");
-        data.forEach((item) => {
-          const date = new Date(item.date);
-          const transactionDate = date.toLocaleDateString("Fa-Ir");
-          transaction += `
-          <tr>
-            <td>${item.id}</td>
-            <td>${item.type}</td>
-            <td>${item.price}</td>
-            <td>${item.refId}</td>
-            <td>${transactionDate}</td>
-          </tr>
-       `;
-        });
-
-        tableBody.innerHTML = transaction;
+        createHtml(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -140,5 +83,25 @@ function sortData() {
     getData();
   }
 }
+function createHtml(data) {
+  let transaction = "";
+  tableHeader.classList.remove("hidden");
+  getDataBtn.classList.add("hidden");
+  searchInput.classList.remove("hidden");
+  dropdown.classList.remove("hidden");
+  data.forEach((item) => {
+    const date = new Date(item.date);
+    const transactionDate = date.toLocaleDateString("Fa-Ir");
+    transaction += `
+          <tr>
+            <td>${item.id}</td>
+            <td>${item.type}</td>
+            <td>${item.price}</td>
+            <td>${item.refId}</td>
+            <td>${transactionDate}</td>
+          </tr>
+       `;
+  });
 
-//   data.sort((a, b) => a.refId.localeCompare(b.refId))
+  tableBody.innerHTML = transaction;
+}
